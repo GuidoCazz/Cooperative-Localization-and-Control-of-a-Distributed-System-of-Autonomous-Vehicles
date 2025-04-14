@@ -1,0 +1,9 @@
+function [X,P,u1,u2,trajectory,gps_measures,radar_measures] = ExtendedKalmanFilter(dt, N, X,Model,Q,R)
+
+    for k=1:N
+        % --- PREDIZIONE (Odometro) ---
+        X_pred = X + dt * [X(4)*cos(X(3)); X(4)*sin(X(3)); (X(4)/L)*tan(delta_k); u1];
+        
+    
+    end
+end
