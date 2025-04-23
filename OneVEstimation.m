@@ -5,7 +5,7 @@ clear; clc; close all;
 %% ---- PARAMETERS ----
 
 dt = 0.1;  % Time step
-N = 50;   % Number of iterations
+N = 200;   % Number of iterations
 L = 2.5;   % Vehicle length
 
 % Initial States [x, y, theta, v]
@@ -79,7 +79,7 @@ for k = 2:N
     Z = Measurement_Model(X1_real) + normrnd(0, sqrt(diag(R_k)));
 
     % EKF Update for Main Robot
-    [X1_est, P, R_k] = EKF(X1_est, X2_est, [u1; u2], P, Z, Q, dt, L, var_GPS, var_R, alpha, beta);
+    [X1_est, ~, P, R_k] = EKF(X1_est, X2_est, [u1; u2], P, Z, Q, dt, L, var_GPS, var_R, alpha, beta);
 
     % Trajectory and measures update
     estimated_trajectory1(:, k) = X1_est(1:2);
